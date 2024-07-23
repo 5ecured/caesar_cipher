@@ -1,9 +1,5 @@
 alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
-# direction = input("Type 'encode' to encrypt or 'decode' to decrypt:\n")
-# user_text = input('Type your message:\n')
-# user_shift = int(input('Type your shift number:\n'))
-
 def encrypt(plain_text, shift_amount):
     encrypted_text = ''
 
@@ -16,15 +12,15 @@ def encrypt(plain_text, shift_amount):
             
         encrypted_text += alphabet[position]
 
-    print(encrypted_text)
+    print(f'{plain_text} has been encrypted to {encrypted_text}')
 
-encrypt(shift_amount = 5, plain_text='hello')
+# encrypt(shift_amount = 5, plain_text='hello')
 
 
-def decrypt(plain_text, shift_amount):
+def decrypt(cipher_text, shift_amount):
     decrypted_text = ''
 
-    for letter in plain_text:
+    for letter in cipher_text:
         position = 0
 
         #not sure why unable to use "position -= alphabet.index(letter) - shift_amount", so must use temp
@@ -34,6 +30,23 @@ def decrypt(plain_text, shift_amount):
 
         decrypted_text += alphabet[position]
 
-    print(decrypted_text)
+    print(f'{cipher_text} has been decrypted to {decrypted_text}')
 
-decrypt(shift_amount=5, plain_text='mjqqt')
+# decrypt(shift_amount=5, cipher_text='mjqqt')
+
+
+direction = input("Type 'encode' to encrypt or 'decode' to decrypt:\n")
+
+while direction != 'encode' or direction != 'decode':
+    print('Type encode or decode only please\n')
+    direction = input("Type 'encode' to encrypt or 'decode' to decrypt:\n")
+    if direction == 'encode' or direction == 'decode':
+        break
+
+user_text = input('Type your message:\n')
+user_shift = int(input('Type your shift number:\n'))
+
+if direction == 'encode':
+    encrypt(shift_amount=user_shift, plain_text=user_text)
+elif direction == 'decode':
+    decrypt(shift_amount=user_shift, cipher_text=user_text)
