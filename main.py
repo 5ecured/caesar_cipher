@@ -18,4 +18,22 @@ def encrypt(plain_text, shift_amount):
 
     print(encrypted_text)
 
-encrypt(shift_amount = 5, plain_text='zulu')
+encrypt(shift_amount = 5, plain_text='hello')
+
+
+def decrypt(plain_text, shift_amount):
+    decrypted_text = ''
+
+    for letter in plain_text:
+        position = 0
+
+        #not sure why unable to use "position -= alphabet.index(letter) - shift_amount", so must use temp
+        temp = alphabet.index(letter) - shift_amount 
+
+        position = temp
+
+        decrypted_text += alphabet[position]
+
+    print(decrypted_text)
+
+decrypt(shift_amount=5, plain_text='mjqqt')
